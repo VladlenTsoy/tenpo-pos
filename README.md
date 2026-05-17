@@ -26,3 +26,29 @@ Existing repos:
 
 ## Current recommendation
 Start with POS backend foundation and risk controls before building the tablet UI. The highest risk is inventory/payment correctness, not UI speed.
+## Frontend app
+
+This repository now contains the standalone tablet-first POS frontend.
+
+Commands:
+
+```bash
+npm install
+npm run dev
+npm run build
+```
+
+Configuration:
+
+- `VITE_API_BASE_URL` — Kokoro/Tenpo API base URL.
+- `VITE_POS_DEMO_MODE=true` keeps the UI usable with demo catalog data while checkout/inventory endpoints are finalized. Set to `false` to use live `/admin/pos/*` endpoints.
+
+Current frontend scope:
+
+- POS shift/session header;
+- barcode/search input;
+- tablet catalog grid with size-level stock visibility;
+- cart and quantity controls;
+- payment method selector;
+- checkout CTA intentionally gated until backend inventory idempotency is finalized.
+
